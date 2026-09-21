@@ -1,5 +1,5 @@
 // ===== SHARED CONFIG (used by all pages) =====
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://cgsp-backend-vl26.onrender.com/api';
 
 // ===== HOME PAGE: category card clicks =====
 document.addEventListener('DOMContentLoaded', () => {
