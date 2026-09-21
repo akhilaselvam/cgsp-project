@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Scheme - CGSP Admin</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    #form-message {
+      display: none;
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="admin-layout">
+    <div class="admin-sidebar">
+      <div class="logo" style="margin-bottom:20px;">🏛️ CGSP</div>
+      <a href="admin-dashboard.html">📊 Dashboard</a>
+      <a href="admin-add-scheme.html" class="active">➕ Add Schemes</a>
+      <a href="admin-manage-schemes.html">📋 Manage Schemes</a>
+      <a href="#" class="logout-btn">🚪 Logout</a>
+    </div>
+
+    <div class="admin-content">
+      <h1>Add New Scheme</h1>
+      <p style="color:#6b7280; margin-bottom:24px;">Fill in the details to add a new government scheme.</p>
+
+      <div id="form-message"></div>
+
+      <form id="add-scheme-form" style="max-width:700px;">
+
+        <div class="form-group">
+          <label>Scheme Name *</label>
+          <input type="text" id="name" placeholder="Enter scheme name" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Category *</label>
+            <select id="category" required>
+              <option value="">Select Category</option>
+              <option value="student">Student</option>
+              <option value="agriculture">Agriculture</option>
+              <option value="physicallyChallenged">Physically Challenged</option>
+              <option value="health">Health & Wellness</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Department *</label>
+            <input type="text" id="department" placeholder="Enter department name" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Description *</label>
+          <textarea id="description" rows="3" placeholder="Enter scheme description" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Eligibility Criteria *</label>
+          <textarea id="eligibilityCriteria" rows="3" placeholder="Enter eligibility criteria" required></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Last Date *</label>
+            <input type="text" id="lastDate" placeholder="dd-mm-yyyy" required>
+          </div>
+          <div class="form-group">
+            <label>Apply Link (Official Website) *</label>
+            <input type="url" id="applyLink" placeholder="https://..." required>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Add Scheme</button>
+          <button type="reset" class="btn btn-outline">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/add-scheme.js"></script>
+</body>
+</html>

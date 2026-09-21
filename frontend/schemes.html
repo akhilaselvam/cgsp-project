@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schemes - CGSP</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">
+      🏛️
+      <div>
+        CGSP
+        <div class="logo-sub">Centralized Government Schemes Portal</div>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="schemes.html" class="active">Schemes</a></li>
+      <li><a href="eligibility.html">Eligibility</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+    <a href="admin-login.html"><button class="btn-admin">🔒 Admin Login</button></a>
+  </nav>
+
+  <div class="schemes-page">
+    <h1 id="category-title">Student Schemes</h1>
+    <p style="color:#6b7280; margin-bottom:20px;">Explore all schemes available for you.</p>
+
+    <!-- CATEGORY TABS -->
+    <div class="category-tabs">
+      <button class="tab-btn" data-category="student">🎓 Student</button>
+      <button class="tab-btn" data-category="agriculture">🌾 Agriculture</button>
+      <button class="tab-btn" data-category="physicallyChallenged">♿ Physically Challenged</button>
+      <button class="tab-btn" data-category="health">❤️ Health & Wellness</button>
+    </div>
+
+    <!-- SCHEMES LIST -->
+    <div id="schemes-list">
+      <p>Loading schemes...</p>
+    </div>
+  </div>
+
+  <!-- VIEW DETAILS MODAL -->
+  <div class="modal-overlay">
+    <div class="modal-box">
+      <button class="modal-close">✕</button>
+      <h2 id="modal-title"></h2>
+
+      <div class="modal-field">
+        <label>Department</label>
+        <div id="modal-department"></div>
+      </div>
+
+      <div class="modal-field">
+        <label>Description</label>
+        <div id="modal-description"></div>
+      </div>
+
+      <div class="modal-field">
+        <label>Eligibility Criteria</label>
+        <div id="modal-eligibility"></div>
+      </div>
+
+      <div class="modal-field">
+        <label>Last Date</label>
+        <div id="modal-lastdate"></div>
+      </div>
+
+      <button id="modal-apply-btn" class="btn btn-primary" style="width:100%; margin-top:10px;">Apply Now →</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2026 CGSP | Centralized Government Schemes Portal &nbsp;|&nbsp; Empowering Citizens · Inclusive Growth · Digital India
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/schemes.js"></script>
+</body>
+</html>

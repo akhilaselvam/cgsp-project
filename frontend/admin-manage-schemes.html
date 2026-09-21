@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Schemes - CGSP Admin</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .manage-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .search-input {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      width: 260px;
+    }
+    .table-wrapper {
+      overflow-x: auto;
+    }
+    .edit-modal-box .form-group { margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+
+  <div class="admin-layout">
+    <div class="admin-sidebar">
+      <div class="logo" style="margin-bottom:20px;">🏛️ CGSP</div>
+      <a href="admin-dashboard.html">📊 Dashboard</a>
+      <a href="admin-add-scheme.html">➕ Add Schemes</a>
+      <a href="admin-manage-schemes.html" class="active">📋 Manage Schemes</a>
+      <a href="#" class="logout-btn">🚪 Logout</a>
+    </div>
+
+    <div class="admin-content">
+      <div class="manage-header">
+        <div>
+          <h1>Manage Schemes</h1>
+          <p style="color:#6b7280;">View, edit or delete existing schemes.</p>
+        </div>
+        <input type="text" class="search-input" id="search-input" placeholder="Search schemes...">
+      </div>
+
+      <div class="table-wrapper">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Scheme Name</th>
+              <th>Category</th>
+              <th>Department</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="schemes-table-body">
+            <tr><td colspan="4">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDIT MODAL -->
+  <div class="modal-overlay" id="edit-modal">
+    <div class="modal-box edit-modal-box">
+      <button class="modal-close" id="edit-modal-close">✕</button>
+      <h2>Edit Scheme</h2>
+
+      <form id="edit-scheme-form">
+        <input type="hidden" id="edit-id">
+
+        <div class="form-group">
+          <label>Scheme Name</label>
+          <input type="text" id="edit-name" required>
+        </div>
+
+        <div class="form-group">
+          <label>Category</label>
+          <select id="edit-category" required>
+            <option value="student">Student</option>
+            <option value="agriculture">Agriculture</option>
+            <option value="physicallyChallenged">Physically Challenged</option>
+            <option value="health">Health & Wellness</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Department</label>
+          <input type="text" id="edit-department" required>
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="edit-description" rows="3" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Eligibility Criteria</label>
+          <textarea id="edit-eligibilityCriteria" rows="3" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Last Date</label>
+          <input type="text" id="edit-lastDate" required>
+        </div>
+
+        <div class="form-group">
+          <label>Apply Link</label>
+          <input type="url" id="edit-applyLink" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/manage-schemes.js"></script>
+</body>
+</html>

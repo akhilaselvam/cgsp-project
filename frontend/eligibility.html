@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check Eligibility - CGSP</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .eligibility-layout {
+      display: flex;
+      gap: 24px;
+      padding: 40px;
+    }
+    .eligibility-sidebar {
+      width: 220px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      height: fit-content;
+    }
+    .eligibility-sidebar button {
+      width: 100%;
+      text-align: left;
+      padding: 12px 16px;
+      border: none;
+      background: none;
+      border-radius: 8px;
+      margin-bottom: 6px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .eligibility-sidebar button.active {
+      background: var(--primary);
+      color: white;
+    }
+    .eligibility-form-box {
+      flex: 1;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 30px;
+    }
+    .eligibility-result {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 8px;
+      display: none;
+    }
+    .eligibility-result.show {
+      display: block;
+    }
+    .field-group {
+      display: none;
+    }
+    .field-group.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      🏛️
+      <div>
+        CGSP
+        <div class="logo-sub">Centralized Government Schemes Portal</div>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="schemes.html">Schemes</a></li>
+      <li><a href="eligibility.html" class="active">Eligibility</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+    <a href="admin-login.html"><button class="btn-admin">🔒 Admin Login</button></a>
+  </nav>
+
+  <div style="padding: 40px 40px 0;">
+    <h1>Check Your Eligibility</h1>
+    <p style="color:#6b7280;">Find out if you are eligible for a scheme by providing the required details.</p>
+  </div>
+
+  <div class="eligibility-layout">
+    <div class="eligibility-sidebar">
+      <button class="active" data-cat="student">🎓 Student</button>
+      <button data-cat="agriculture">🌾 Agriculture</button>
+      <button data-cat="physicallyChallenged">♿ Physically Challenged</button>
+      <button data-cat="health">❤️ Health & Wellness</button>
+    </div>
+
+    <div class="eligibility-form-box">
+      <h3 id="form-heading">🎓 Student Eligibility</h3>
+      <br>
+
+      <!-- COMMON FIELDS (always shown) -->
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="full-name" placeholder="Enter your full name">
+      </div>
+
+      <div class="form-group">
+        <label>State</label>
+        <select id="state">
+          <option value="">Select State</option>
+          <option>Andhra Pradesh</option>
+          <option>Bihar</option>
+          <option>Gujarat</option>
+          <option>Karnataka</option>
+          <option>Kerala</option>
+          <option>Madhya Pradesh</option>
+          <option>Maharashtra</option>
+          <option>Punjab</option>
+          <option>Rajasthan</option>
+          <option>Tamil Nadu</option>
+          <option>Telangana</option>
+          <option>Uttar Pradesh</option>
+          <option>West Bengal</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <!-- STUDENT FIELDS -->
+      <div class="field-group show" id="fields-student">
+        <div class="form-group">
+          <label>Field of Study</label>
+          <select id="field-of-study">
+            <option value="">Select Field</option>
+            <option>Engineering</option>
+            <option>Medical</option>
+            <option>Arts & Science</option>
+            <option>Commerce</option>
+            <option>Law</option>
+            <option>Diploma / ITI</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Education Level</label>
+          <select id="education-level">
+            <option value="">Select Education Level</option>
+            <option value="school">School</option>
+            <option value="undergraduate">Undergraduate</option>
+            <option value="postgraduate">Postgraduate</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Annual Family Income (₹)</label>
+          <input type="number" id="income-student" placeholder="Enter your annual family income">
+        </div>
+      </div>
+
+      <!-- AGRICULTURE FIELDS -->
+      <div class="field-group" id="fields-agriculture">
+        <div class="form-group">
+          <label>Land Area (in Acres)</label>
+          <input type="number" id="land-area" placeholder="Enter land area in acres" step="0.1">
+        </div>
+      </div>
+
+      <!-- PHYSICALLY CHALLENGED FIELDS -->
+      <div class="field-group" id="fields-physicallyChallenged">
+        <div class="form-group">
+          <label>Type of Disability</label>
+          <select id="disability-type">
+            <option value="">Select Type</option>
+            <option>Visual Impairment</option>
+            <option>Hearing Impairment</option>
+            <option>Locomotor Disability</option>
+            <option>Intellectual Disability</option>
+            <option>Multiple Disabilities</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- HEALTH FIELDS -->
+      <div class="field-group" id="fields-health">
+        <div class="form-group">
+          <label>Age</label>
+          <input type="number" id="age" placeholder="Enter your age">
+        </div>
+        <div class="form-group">
+          <label>Annual Family Income (₹)</label>
+          <input type="number" id="income-health" placeholder="Enter your annual family income">
+        </div>
+      </div>
+
+      <button class="btn btn-primary" onclick="checkEligibility()">Check Eligibility</button>
+
+      <div class="eligibility-result" id="result-box"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    © 2026 CGSP | Centralized Government Schemes Portal &nbsp;|&nbsp; Empowering Citizens · Inclusive Growth · Digital India
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/eligibility.js"></script>
+</body>
+</html>

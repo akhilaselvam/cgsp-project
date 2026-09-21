@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - CGSP</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .login-wrapper {
+      display: flex;
+      min-height: calc(100vh - 65px);
+    }
+    .login-left {
+      flex: 1;
+      background: #eff6ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-icon-circle {
+      width: 160px;
+      height: 160px;
+      background: #dbeafe;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+    }
+    .login-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .login-box {
+      width: 100%;
+      max-width: 360px;
+    }
+    .login-box h2 {
+      margin-bottom: 24px;
+    }
+    #login-error {
+      display: none;
+      background: #fef2f2;
+      color: #dc2626;
+      padding: 10px 14px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+    .back-home {
+      display: block;
+      text-align: center;
+      margin-top: 16px;
+      color: var(--primary);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      🏛️
+      <div>
+        CGSP
+        <div class="logo-sub">Centralized Government Schemes Portal</div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="login-wrapper">
+    <div class="login-left">
+      <div class="login-icon-circle">🛡️</div>
+    </div>
+    <div class="login-right">
+      <div class="login-box">
+        <h2>👤 Admin Login</h2>
+
+        <div id="login-error"></div>
+
+        <form id="admin-login-form">
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="username" placeholder="Enter your username" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Login</button>
+        </form>
+
+        <a href="index.html" class="back-home">← Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

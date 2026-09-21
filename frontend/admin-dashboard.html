@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - CGSP</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="admin-layout">
+    <div class="admin-sidebar">
+      <div class="logo" style="margin-bottom:20px;">🏛️ CGSP</div>
+      <a href="admin-dashboard.html" class="active">📊 Dashboard</a>
+      <a href="admin-add-scheme.html">➕ Add Schemes</a>
+      <a href="admin-manage-schemes.html">📋 Manage Schemes</a>
+      <a href="#" class="logout-btn">🚪 Logout</a>
+    </div>
+
+    <div class="admin-content">
+      <h1>Dashboard</h1>
+      <p style="color:#6b7280; margin-bottom:24px;">Welcome, Admin! Here's an overview of the portal.</p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span>📄 Total Schemes</span>
+          <div class="stat-number" id="stat-total">0</div>
+        </div>
+        <div class="stat-card">
+          <span>🎓 Student Schemes</span>
+          <div class="stat-number" id="stat-student">0</div>
+        </div>
+        <div class="stat-card">
+          <span>🌾 Agriculture Schemes</span>
+          <div class="stat-number" id="stat-agriculture">0</div>
+        </div>
+        <div class="stat-card">
+          <span>❤️ Health & Wellness Schemes</span>
+          <div class="stat-number" id="stat-health">0</div>
+        </div>
+      </div>
+
+      <h3 style="margin-bottom:16px;">Quick Actions</h3>
+      <div style="display:flex; gap:16px;">
+        <a href="admin-add-scheme.html"><button class="btn btn-primary">➕ Add New Scheme</button></a>
+        <a href="admin-manage-schemes.html"><button class="btn btn-outline">⚙️ Manage Schemes</button></a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
