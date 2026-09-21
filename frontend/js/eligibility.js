@@ -16,26 +16,24 @@ document.addEventListener('DOMContentLoaded', () => {
       currentEligCategory = btn.getAttribute('data-cat');
       document.getElementById('form-heading').textContent = categoryTitles[currentEligCategory];
 
-      // Hide all field groups, show only the matching one
       document.querySelectorAll('.field-group').forEach(group => group.classList.remove('show'));
       document.getElementById('fields-' + currentEligCategory).classList.add('show');
 
       document.getElementById('result-box').classList.remove('show');
+      document.getElementById('matching-schemes').innerHTML = '';
     });
   });
 });
 
-function checkEligibility() {
+async function checkEligibility() {
   const name = document.getElementById('full-name').value;
   const state = document.getElementById('state').value;
-  const resultBox = document.getElementById('result-box');
 
   if (!name || !state) {
     showResult('Please enter your name and state to continue.', false);
     return;
   }
 
-  // Category-specific validation
   if (currentEligCategory === 'student') {
     const field = document.getElementById('field-of-study').value;
     const education = document.getElementById('education-level').value;
@@ -45,7 +43,6 @@ function checkEligibility() {
       return;
     }
   }
-
   if (currentEligCategory === 'agriculture') {
     const land = document.getElementById('land-area').value;
     if (!land) {
@@ -53,7 +50,6 @@ function checkEligibility() {
       return;
     }
   }
-
   if (currentEligCategory === 'physicallyChallenged') {
     const disability = document.getElementById('disability-type').value;
     if (!disability) {
@@ -61,7 +57,6 @@ function checkEligibility() {
       return;
     }
   }
-
   if (currentEligCategory === 'health') {
     const age = document.getElementById('age').value;
     const income = document.getElementById('income-health').value;
@@ -71,10 +66,45 @@ function checkEligibility() {
     }
   }
 
-  showResult(
-    `Based on the details provided, ${name} may be eligible for schemes in this category. Browse the Schemes page to see matching options and apply.`,
-    true
-  );
+  // Fetch real schemes for this category from the database
+  const matchList = document.getElementById('matching-schemes');
+  matchList.innerHTML = '<p>Checking matching schemes...</p>';
+
+  try {
+    const response = await fetch(`${API_BASE}/schemes/${currentEligCategory}`);
+    const schemes = await response.json();
+
+    if (schemes.length === 0) {
+      showResult(`Hi ${name}, no schemes are currently listed in this category. Please check back later.`, false);
+      matchList.innerHTML = '';
+      return;
+    }
+
+    showResult(`Hi ${name}, based on your details, here are the schemes available in this category. Please read each scheme's eligibility criteria carefully to confirm you qualify.`, true);
+    renderMatchingSchemes(schemes);
+
+  } catch (error) {
+    showResult('Could not load schemes. Please check your connection.', false);
+    matchList.innerHTML = '';
+    console.error(error);
+  }
+}
+
+function renderMatchingSchemes(schemes) {
+  const matchList = document.getElementById('matching-schemes');
+  matchList.innerHTML = schemes.map(scheme => `
+    <div class="scheme-card" style="margin-top:14px;">
+      <div class="scheme-card-info">
+        <h3>${scheme.name}</h3>
+        <p><strong>Eligibility:</strong> ${scheme.eligibilityCriteria}</p>
+        <div class="scheme-meta">
+          <span><strong>Department:</strong> ${scheme.department}</span>
+          <span><strong>Last Date:</strong> ${scheme.lastDate}</span>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="window.open('${scheme.applyLink}', '_blank')">Apply Now →</button>
+    </div>
+  `).join('');
 }
 
 function showResult(message, success) {
