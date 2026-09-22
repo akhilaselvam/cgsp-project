@@ -86,7 +86,48 @@
             <input type="url" id="applyLink" placeholder="https://..." required>
           </div>
         </div>
+                <!-- STUDENT MATCHING FIELDS -->
+      <div class="field-group show" id="match-student">
+  <div class="form-row">
+    <div class="form-group">
+      <label>Maximum Annual Income (₹) — leave blank if no limit</label>
+      <input type="number" id="maxIncome-student" placeholder="e.g. 250000">
+    </div>
+    
+  </div>
+  <div class="form-group">
+    <label>Applicable Caste Categories</label>
+    <select id="applicableCastes-student" multiple style="height:110px;">
+      <option value="All">All Categories</option>
+      <option value="SC">SC</option>
+      <option value="ST">ST</option>
+      <option value="OBC">OBC</option>
+      <option value="General">General</option>
+      <option value="Minority">Minority</option>
+    </select>
+    <small style="color:#6b7280;">Hold Ctrl (Cmd on Mac) to select multiple, or choose "All Categories"</small>
+  </div>
+</div>
+      
+      
 
+        <!-- HEALTH MATCHING FIELDS -->
+        <div class="field-group" id="match-health">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Minimum Age — leave blank if none</label>
+              <input type="number" id="minAge" placeholder="e.g. 0">
+            </div>
+            <div class="form-group">
+              <label>Maximum Age — leave blank if no limit</label>
+              <input type="number" id="maxAge" placeholder="e.g. 60">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Maximum Annual Income (₹) — leave blank if no limit</label>
+            <input type="number" id="maxIncome-health" placeholder="e.g. 300000">
+          </div>
+        </div>
         <div class="form-actions">
           <button type="submit" class="btn btn-primary">Add Scheme</button>
           <button type="reset" class="btn btn-outline">Reset</button>
