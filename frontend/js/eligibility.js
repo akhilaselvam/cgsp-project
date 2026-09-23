@@ -54,26 +54,20 @@ async function checkEligibility() {
   }
 }
 
+
 function isEligible(scheme, details) {
-  if (currentEligCategory === 'student') {
-    if (scheme.maxIncome != null) {
-      if (details.income == null || details.income > scheme.maxIncome) return false;
-    }
-    if (scheme.applicableCastes && scheme.applicableCastes.length > 0 && !scheme.applicableCastes.includes('All')) {
-      if (!details.caste || !scheme.applicableCastes.includes(details.caste)) return false;
-    }
-    return true;
+  if (scheme.maxIncome != null) {
+    if (details.income == null || details.income > scheme.maxIncome) return false;
   }
 
-  if (currentEligCategory === 'agriculture') {
-    return true;
+  if (scheme.applicableCastes && scheme.applicableCastes.length > 0 && !scheme.applicableCastes.includes('All')) {
+    if (!details.caste || !scheme.applicableCastes.includes(details.caste)) return false;
   }
 
   if (currentEligCategory === 'physicallyChallenged') {
-    if (!scheme.disabilityTypes || scheme.disabilityTypes.length === 0) return true;
-    if (scheme.disabilityTypes.includes('All')) return true;
-    if (!details.disability) return false;
-    return scheme.disabilityTypes.includes(details.disability);
+    if (scheme.disabilityTypes && scheme.disabilityTypes.length > 0 && !scheme.disabilityTypes.includes('All')) {
+      if (!details.disability || !scheme.disabilityTypes.includes(details.disability)) return false;
+    }
   }
 
   if (currentEligCategory === 'health') {
@@ -83,10 +77,6 @@ function isEligible(scheme, details) {
     if (scheme.maxAge != null) {
       if (details.age == null || details.age > scheme.maxAge) return false;
     }
-    if (scheme.maxIncome != null) {
-      if (details.income == null || details.income > scheme.maxIncome) return false;
-    }
-    return true;
   }
 
   return true;

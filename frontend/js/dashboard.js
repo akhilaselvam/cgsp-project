@@ -10,6 +10,8 @@ async function loadStats() {
       schemes.filter(s => s.category === 'student').length;
     document.getElementById('stat-agriculture').textContent =
       schemes.filter(s => s.category === 'agriculture').length;
+    document.getElementById('stat-physicallyChallenged').textContent =
+      schemes.filter(s => s.category === 'physicallyChallenged').length;
     document.getElementById('stat-health').textContent =
       schemes.filter(s => s.category === 'health').length;
 

@@ -23,6 +23,8 @@
       gap: 12px;
       margin-top: 10px;
     }
+    .field-group { display: none; }
+    .field-group.show { display: block; }
   </style>
 </head>
 <body>
@@ -86,18 +88,18 @@
             <input type="url" id="applyLink" placeholder="https://..." required>
           </div>
         </div>
-                <!-- STUDENT MATCHING FIELDS -->
-      <div class="field-group show" id="match-student">
-  <div class="form-row">
-    <div class="form-group">
-      <label>Maximum Annual Income (₹) — leave blank if no limit</label>
-      <input type="number" id="maxIncome-student" placeholder="e.g. 250000">
-    </div>
-    
+
+
+        <!-- AGRICULTURE MATCHING FIELDS -->
+<<!-- AGRICULTURE MATCHING FIELDS -->
+<div class="field-group" id="match-agriculture">
+  <div class="form-group">
+    <label>Maximum Annual Income (₹) — leave blank if no limit</label>
+    <input type="number" id="maxIncome-agriculture" placeholder="e.g. 300000">
   </div>
   <div class="form-group">
     <label>Applicable Caste Categories</label>
-    <select id="applicableCastes-student" multiple style="height:110px;">
+    <select id="applicableCastes-agriculture" multiple style="height:100px;">
       <option value="All">All Categories</option>
       <option value="SC">SC</option>
       <option value="ST">ST</option>
@@ -105,29 +107,93 @@
       <option value="General">General</option>
       <option value="Minority">Minority</option>
     </select>
-    <small style="color:#6b7280;">Hold Ctrl (Cmd on Mac) to select multiple, or choose "All Categories"</small>
+    <small style="color:#6b7280;">Hold Ctrl (Cmd on Mac) to select multiple</small>
   </div>
 </div>
-      
-      
-
-        <!-- HEALTH MATCHING FIELDS -->
-        <div class="field-group" id="match-health">
+        <!-- STUDENT MATCHING FIELDS -->
+        <div class="field-group" id="match-student">
           <div class="form-row">
             <div class="form-group">
-              <label>Minimum Age — leave blank if none</label>
-              <input type="number" id="minAge" placeholder="e.g. 0">
+              <label>Maximum Annual Income (₹) — leave blank if no limit</label>
+              <input type="number" id="maxIncome-student" placeholder="e.g. 250000">
             </div>
             <div class="form-group">
-              <label>Maximum Age — leave blank if no limit</label>
-              <input type="number" id="maxAge" placeholder="e.g. 60">
+              <label>Applicable Caste Categories</label>
+              <select id="applicableCastes-student" multiple style="height:100px;">
+                <option value="All">All Categories</option>
+                <option value="SC">SC</option>
+                <option value="ST">ST</option>
+                <option value="OBC">OBC</option>
+                <option value="General">General</option>
+                <option value="Minority">Minority</option>
+              </select>
+              <small style="color:#6b7280;">Hold Ctrl (Cmd on Mac) to select multiple</small>
             </div>
           </div>
-          <div class="form-group">
-            <label>Maximum Annual Income (₹) — leave blank if no limit</label>
-            <input type="number" id="maxIncome-health" placeholder="e.g. 300000">
-          </div>
         </div>
+
+        <!-- PHYSICALLY CHALLENGED MATCHING FIELDS -->
+ <!-- PHYSICALLY CHALLENGED MATCHING FIELDS -->
+<div class="field-group" id="match-physicallyChallenged">
+  <div class="form-group">
+    <label>Applicable Disability Types</label>
+    <select id="disabilityTypes" multiple style="height:110px;">
+      <option value="All">All Types</option>
+      <option value="Visual Impairment">Visual Impairment</option>
+      <option value="Hearing Impairment">Hearing Impairment</option>
+      <option value="Locomotor Disability">Locomotor Disability</option>
+      <option value="Intellectual Disability">Intellectual Disability</option>
+      <option value="Multiple Disabilities">Multiple Disabilities</option>
+    </select>
+    <small style="color:#6b7280;">Hold Ctrl (Cmd on Mac) to select multiple, or choose "All Types"</small>
+  </div>
+  <div class="form-group">
+    <label>Maximum Annual Income (₹) — leave blank if no limit</label>
+    <input type="number" id="maxIncome-physicallyChallenged" placeholder="e.g. 300000">
+  </div>
+  <div class="form-group">
+    <label>Applicable Caste Categories</label>
+    <select id="applicableCastes-physicallyChallenged" multiple style="height:100px;">
+      <option value="All">All Categories</option>
+      <option value="SC">SC</option>
+      <option value="ST">ST</option>
+      <option value="OBC">OBC</option>
+      <option value="General">General</option>
+      <option value="Minority">Minority</option>
+    </select>
+    <small style="color:#6b7280;">Hold Ctrl (Cmd on Mac) to select multiple</small>
+  </div>
+</div>
+
+<!-- HEALTH MATCHING FIELDS -->
+<div class="field-group" id="match-health">
+  <div class="form-row">
+    <div class="form-group">
+      <label>Minimum Age — leave blank if none</label>
+      <input type="number" id="minAge" placeholder="e.g. 0">
+    </div>
+    <div class="form-group">
+      <label>Maximum Age — leave blank if no limit</label>
+      <input type="number" id="maxAge" placeholder="e.g. 60">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Maximum Annual Income (₹) — leave blank if no limit</label>
+    <input type="number" id="maxIncome-health" placeholder="e.g. 300000">
+  </div>
+  <div class="form-group">
+    <label>Applicable Caste Categories</label>
+    <select id="applicableCastes-health" multiple style="height:100px;">
+      <option value="All">All Categories</option>
+      <option value="SC">SC</option>
+      <option value="ST">ST</option>
+      <option value="OBC">OBC</option>
+      <option value="General">General</option>
+      <option value="Minority">Minority</option>
+    </select>
+    <small style="color:#6b7280;">Hold Ctrl (Cmd on Mac) to select multiple</small>
+  </div>
+</div>
         <div class="form-actions">
           <button type="submit" class="btn btn-primary">Add Scheme</button>
           <button type="reset" class="btn btn-outline">Reset</button>
