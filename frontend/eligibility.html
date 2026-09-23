@@ -6,41 +6,55 @@
   <title>Check Eligibility - CGSP</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .elig-wrapper { padding: 40px; max-width: 900px; margin: 0 auto; }
-    .elig-box {
+    .eligibility-layout {
+      display: flex;
+      gap: 24px;
+      padding: 40px;
+    }
+    .eligibility-sidebar {
+      width: 220px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      height: fit-content;
+    }
+    .eligibility-sidebar button {
+      width: 100%;
+      text-align: left;
+      padding: 12px 16px;
+      border: none;
+      background: none;
+      border-radius: 8px;
+      margin-bottom: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 14px;
+    }
+    .eligibility-sidebar button.active {
+      background: var(--primary);
+      color: white;
+    }
+    .eligibility-form-box {
+      flex: 1;
       background: white;
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 30px;
     }
-    .elig-section-title {
-      font-size: 16px;
-      font-weight: 700;
-      margin: 24px 0 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
-    }
-    .elig-section-title:first-child { margin-top: 0; }
-    .form-row3 {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
-    }
-    .form-row2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .form-actions { display: flex; gap: 12px; margin-top: 10px; }
     .eligibility-result {
-      margin-top: 24px;
+      margin-top: 20px;
       padding: 16px;
       border-radius: 8px;
       display: none;
     }
     .eligibility-result.show { display: block; }
+    .field-group { display: none; }
+    .field-group.show { display: block; }
     @media (max-width: 768px) {
-      .form-row3, .form-row2 { grid-template-columns: 1fr; }
+      .eligibility-layout { flex-direction: column; }
+      .eligibility-sidebar { width: 100%; display: flex; gap: 8px; overflow-x: auto; }
+      .eligibility-sidebar button { white-space: nowrap; }
     }
   </style>
 </head>
@@ -63,80 +77,60 @@
     <a href="admin-login.html"><button class="btn-admin">🔒 Admin Login</button></a>
   </nav>
 
-  <div class="elig-wrapper">
+  <div style="padding: 40px 40px 0;">
     <h1>Check Your Eligibility</h1>
-    <p style="color:#6b7280; margin-bottom:20px;">Fill in your details below to see which schemes you're eligible for.</p>
+    <p style="color:#6b7280;">Select a category, then fill in your details to see matching schemes.</p>
+  </div>
 
-    <div class="elig-box">
+  <div class="eligibility-layout">
+    <div class="eligibility-sidebar">
+      <button class="active" data-cat="student">🎓 Student</button>
+      <button data-cat="agriculture">🌾 Agriculture</button>
+      <button data-cat="physicallyChallenged">♿ Physically Challenged</button>
+      <button data-cat="health">❤️ Health & Wellness</button>
+    </div>
 
-      <div class="elig-section-title">Personal Information</div>
-      <div class="form-row3">
-        <div class="form-group">
-          <label>Full Name</label>
-          <input type="text" id="full-name" placeholder="Enter your full name">
-        </div>
-        <div class="form-group">
-          <label>Age</label>
-          <input type="number" id="age" placeholder="Enter your age">
-        </div>
-        <div class="form-group">
-          <label>Gender</label>
-          <select id="gender">
-            <option value="">Select Gender</option>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Other</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row3">
-        <div class="form-group">
-          <label>Mobile Number</label>
-          <input type="text" id="mobile" placeholder="Enter mobile number">
-        </div>
-        <div class="form-group">
-          <label>State</label>
-          <select id="state">
-            <option value="">Select State</option>
-            <option>Andhra Pradesh</option>
-            <option>Bihar</option>
-            <option>Gujarat</option>
-            <option>Karnataka</option>
-            <option>Kerala</option>
-            <option>Madhya Pradesh</option>
-            <option>Maharashtra</option>
-            <option>Punjab</option>
-            <option>Rajasthan</option>
-            <option>Tamil Nadu</option>
-            <option>Telangana</option>
-            <option>Uttar Pradesh</option>
-            <option>West Bengal</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>District</label>
-          <input type="text" id="district" placeholder="Enter district">
-        </div>
+    <div class="eligibility-form-box">
+      <h3 id="form-heading">🎓 Student Eligibility</h3>
+      <br>
+
+      <!-- COMMON FIELDS -->
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="full-name" placeholder="Enter your full name">
       </div>
 
-      <div class="elig-section-title">Financial Information</div>
-      <div class="form-row3">
+      <div class="form-group">
+        <label>State</label>
+        <select id="state">
+          <option value="">Select State</option>
+          <option>Andhra Pradesh</option>
+          <option>Bihar</option>
+          <option>Gujarat</option>
+          <option>Karnataka</option>
+          <option>Kerala</option>
+          <option>Madhya Pradesh</option>
+          <option>Maharashtra</option>
+          <option>Punjab</option>
+          <option>Rajasthan</option>
+          <option>Tamil Nadu</option>
+          <option>Telangana</option>
+          <option>Uttar Pradesh</option>
+          <option>West Bengal</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <!-- STUDENT FIELDS -->
+      <div class="field-group show" id="fields-student">
         <div class="form-group">
           <label>Annual Family Income (₹)</label>
-          <select id="income-range">
-            <option value="">Select income range</option>
-            <option value="100000">Below ₹1,00,000</option>
-            <option value="250000">₹1,00,000 – ₹2,50,000</option>
-            <option value="500000">₹2,50,000 – ₹5,00,000</option>
-            <option value="1000000">₹5,00,000 – ₹10,00,000</option>
-            <option value="99999999">Above ₹10,00,000</option>
-          </select>
+          <input type="number" id="income-student" placeholder="Enter your annual family income">
         </div>
         <div class="form-group">
-          <label>Category (Caste)</label>
-          <select id="caste">
-            <option value="">Select category</option>
+          <label>Caste Category</label>
+          <select id="caste-student">
+            <option value="">Select Caste Category</option>
             <option value="SC">SC</option>
             <option value="ST">ST</option>
             <option value="OBC">OBC</option>
@@ -144,42 +138,41 @@
             <option value="Minority">Minority</option>
           </select>
         </div>
-        <div class="form-group">
-          <label>Occupation</label>
-          <select id="occupation">
-            <option value="">Select occupation</option>
-            <option>Student</option>
-            <option>Farmer</option>
-            <option>Self-Employed</option>
-            <option>Unemployed</option>
-            <option>Salaried</option>
-            <option>Other</option>
-          </select>
-        </div>
       </div>
 
-      <div class="elig-section-title">Additional Information (as per category)</div>
-      <div class="form-row3">
-       
-        
+      <!-- AGRICULTURE FIELDS -->
+      <div class="field-group" id="fields-agriculture">
+        <p style="color:#6b7280; font-size:14px;">No additional details needed — all agriculture schemes will be shown.</p>
+      </div>
+
+      <!-- PHYSICALLY CHALLENGED FIELDS -->
+      <div class="field-group" id="fields-physicallyChallenged">
         <div class="form-group">
-          <label>Disability Type (if applicable)</label>
+          <label>Type of Disability</label>
           <select id="disability-type">
-            <option value="">Select type of disability</option>
+            <option value="">Select Type</option>
             <option>Visual Impairment</option>
             <option>Hearing Impairment</option>
             <option>Locomotor Disability</option>
             <option>Intellectual Disability</option>
             <option>Multiple Disabilities</option>
-            <option>Other</option>
           </select>
         </div>
       </div>
 
-      <div class="form-actions">
-        <button class="btn btn-primary" onclick="checkEligibility()">Check Eligibility</button>
-        <button class="btn btn-outline" onclick="document.getElementById('matching-schemes').innerHTML=''; document.getElementById('result-box').classList.remove('show'); document.querySelectorAll('.elig-box input, .elig-box select').forEach(el => el.value='');">Reset</button>
+      <!-- HEALTH FIELDS -->
+      <div class="field-group" id="fields-health">
+        <div class="form-group">
+          <label>Age</label>
+          <input type="number" id="age-health" placeholder="Enter your age">
+        </div>
+        <div class="form-group">
+          <label>Annual Family Income (₹)</label>
+          <input type="number" id="income-health" placeholder="Enter your annual family income">
+        </div>
       </div>
+
+      <button class="btn btn-primary" onclick="checkEligibility()">Check Eligibility</button>
 
       <div class="eligibility-result" id="result-box"></div>
       <div id="matching-schemes"></div>
