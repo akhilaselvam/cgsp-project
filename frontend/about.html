@@ -73,6 +73,7 @@
 <body>
 
   <nav class="navbar">
+
     <div class="logo">
       🏛️
       <div>
@@ -81,17 +82,24 @@
       </div>
     </div>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="schemes.html">Schemes</a></li>
-      <li><a href="eligibility.html">Eligibility</a></li>
-      <li><a href="about.html" class="active">About Us</a></li>
+   <li><a href="index.html" class="active" data-i18n="home">Home</a></li>
+<li><a href="schemes.html" data-i18n="schemes">Schemes</a></li>
+<li><a href="eligibility.html" data-i18n="eligibility">Eligibility</a></li>
+<li><a href="about.html" data-i18n="aboutUs">About Us</a></li>
     </ul>
-    <a href="admin-login.html"><button class="btn-admin">🔒 Admin Login</button></a>
+    <div style="display:flex; align-items:center; gap:12px;">
+  <select id="language-selector" onchange="setLanguage(this.value)" style="padding:8px 12px; border-radius:6px; border:1px solid var(--border);">
+    <option value="en">English</option>
+    <option value="hi">हिन्दी</option>
+    <option value="te">తెలుగు</option>
+  </select>
+  <a href="admin-login.html"><button class="btn-admin" >🔒 Admin Login</button></a>
+</div>
   </nav>
 
   <div class="about-hero">
-    <h1>About Us</h1>
-    <p>We are a team of passionate developers working towards making government schemes accessible to every citizen.</p>
+    <h1 data-i18n="aboutTitle">About Us</h1>
+    <p data-i18n="aboutDesc">We are a team of passionate developers working towards making government schemes accessible to every citizen.</p>
   </div>
 
   <div class="team-grid">
@@ -123,7 +131,7 @@
   <footer class="footer">
     © 2026 CGSP | Centralized Government Schemes Portal &nbsp;|&nbsp; Empowering Citizens · Inclusive Growth · Digital India
   </footer>
-
+<script src="js/translations.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

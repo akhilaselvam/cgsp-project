@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Schemes - CGSP</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/translations.js"></script>
 </head>
 <body>
 
@@ -18,24 +19,31 @@
       </div>
     </div>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="schemes.html" class="active">Schemes</a></li>
-      <li><a href="eligibility.html">Eligibility</a></li>
-      <li><a href="about.html">About Us</a></li>
+    <li><a href="index.html" class="active" data-i18n="home">Home</a></li>
+<li><a href="schemes.html" data-i18n="schemes">Schemes</a></li>
+<li><a href="eligibility.html" data-i18n="eligibility">Eligibility</a></li>
+<li><a href="about.html" data-i18n="aboutUs">About Us</a></li>
     </ul>
-    <a href="admin-login.html"><button class="btn-admin">🔒 Admin Login</button></a>
+    <div style="display:flex; align-items:center; gap:12px;">
+  <select id="language-selector" onchange="setLanguage(this.value)" style="padding:8px 12px; border-radius:6px; border:1px solid var(--border);">
+    <option value="en">English</option>
+    <option value="hi">हिन्दी</option>
+    <option value="te">తెలుగు</option>
+  </select>
+  <a href="admin-login.html"><button class="btn-admin" >🔒 Admin Login</button></a>
+</div>
   </nav>
 
   <div class="schemes-page">
     <h1 id="category-title">Student Schemes</h1>
-    <p style="color:#6b7280; margin-bottom:20px;">Explore all schemes available for you.</p>
+    <p style="color:#6b7280; margin-bottom:20px;" data-i18n="schemesPageTitle">Explore all schemes available for you.</p>
 
     <!-- CATEGORY TABS -->
     <div class="category-tabs">
-      <button class="tab-btn" data-category="student">🎓 Student</button>
-      <button class="tab-btn" data-category="agriculture">🌾 Agriculture</button>
-      <button class="tab-btn" data-category="physicallyChallenged">♿ Physically Challenged</button>
-      <button class="tab-btn" data-category="health">❤️ Health & Wellness</button>
+    <button class="tab-btn" data-category="student"><span data-i18n="student">🎓 Student</span></button>
+<button class="tab-btn" data-category="agriculture"><span data-i18n="agriculture">🌾 Agriculture</span></button>
+<button class="tab-btn" data-category="physicallyChallenged"><span data-i18n="physicallyChallenged">♿ Physically Challenged</span></button>
+<button class="tab-btn" data-category="health"><span data-i18n="health">❤️ Health & Wellness</span></button>
     </div>
 
     <!-- SCHEMES LIST -->
@@ -78,7 +86,7 @@
   <footer class="footer">
     © 2026 CGSP | Centralized Government Schemes Portal &nbsp;|&nbsp; Empowering Citizens · Inclusive Growth · Digital India
   </footer>
-
+<script src="js/translations.js"></script>
   <script src="js/main.js"></script>
   <script src="js/schemes.js"></script>
 </body>

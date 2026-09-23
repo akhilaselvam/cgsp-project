@@ -59,21 +59,27 @@
       </div>
     </div>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="schemes.html">Schemes</a></li>
-      <li><a href="eligibility.html" class="active">Eligibility</a></li>
-      <li><a href="about.html">About Us</a></li>
+    <li><a href="index.html" class="active" data-i18n="home">Home</a></li>
+<li><a href="schemes.html" data-i18n="schemes">Schemes</a></li>
+<li><a href="eligibility.html" data-i18n="eligibility">Eligibility</a></li>
+<li><a href="about.html" data-i18n="aboutUs">About Us</a></li>
     </ul>
-    <a href="admin-login.html"><button class="btn-admin">🔒 Admin Login</button></a>
+   <div style="display:flex; align-items:center; gap:12px;">
+  <select id="language-selector" onchange="setLanguage(this.value)" style="padding:8px 12px; border-radius:6px; border:1px solid var(--border);">
+    <option value="en">English</option>
+    <option value="hi">हिन्दी</option>
+    <option value="te">తెలుగు</option>
+  </select>
+  <a href="admin-login.html"><button class="btn-admin" >🔒 Admin Login</button></a>
+</div>
   </nav>
 
   <div class="elig-wrapper">
-    <h1>Check Your Eligibility</h1>
-    <p style="color:#6b7280; margin-bottom:20px;">Select a category, then fill in your details to see which schemes you're eligible for.</p>
-
+   <h1 data-i18n="eligibilityTitle">Check Your Eligibility</h1>
+<p style="color:#6b7280; margin-bottom:20px;" data-i18n="eligibilityDesc">Select a category, then fill in your details to see which schemes you're eligible for.</p>
     <div class="elig-box">
 
-      <div class="elig-section-title">Select Category</div>
+      <div class="elig-section-title" data-i18n="selectCategory">Select Category</div>
       <div style="display:flex; gap:12px; margin-bottom:10px; flex-wrap:wrap;">
         <button type="button" class="btn btn-outline cat-btn active" data-cat="student" onclick="selectCategory('student')">🎓 Student</button>
         <button type="button" class="btn btn-outline cat-btn" data-cat="agriculture" onclick="selectCategory('agriculture')">🌾 Agriculture</button>
@@ -81,7 +87,7 @@
         <button type="button" class="btn btn-outline cat-btn" data-cat="health" onclick="selectCategory('health')">❤️ Health & Wellness</button>
       </div>
 
-      <div class="elig-section-title">Personal Information</div>
+      <div class="elig-section-title" data-i18n="personalInfo">Personal Information</div>
       <div class="form-row3">
         <div class="form-group">
           <label>Full Name</label>
@@ -132,12 +138,13 @@
         </div>
       </div>
 
-      <div class="elig-section-title">Financial Information</div>
+      <div class="elig-section-title" data-i18n="financialInfo">Financial Information</div>
       <div class="form-row3">
        <div class="form-group">
   <label>Annual Family Income (₹)</label>
   <input type="number" id="income-range" placeholder="Enter your exact annual income">
 </div>
+
         <div class="form-group">
           <label>Category (Caste)</label>
           <select id="caste">
@@ -163,7 +170,7 @@
         </div>
       </div>
 
-      <div class="elig-section-title">Additional Information (as per category)</div>
+      <div class="elig-section-title" data-i18n="additionalInfo">Additional Information (as per category)</div>
       <div class="form-row3">
         <div class="form-group">
           <label>Disability Type (if applicable)</label>
@@ -180,7 +187,7 @@
       </div>
 
       <div class="form-actions">
-        <button class="btn btn-primary" onclick="checkEligibility()">Check Eligibility</button>
+        <button class="btn btn-primary" onclick="checkEligibility()" data-i18n="checkEligibilityBtn">Check Eligibility</button>
         <button class="btn btn-outline" onclick="document.getElementById('matching-schemes').innerHTML=''; document.getElementById('result-box').classList.remove('show'); document.querySelectorAll('.elig-box input, .elig-box select').forEach(el => el.value='');">Reset</button>
       </div>
 
@@ -192,7 +199,7 @@
   <footer class="footer">
     © 2026 CGSP | Centralized Government Schemes Portal &nbsp;|&nbsp; Empowering Citizens · Inclusive Growth · Digital India
   </footer>
-
+<script src="js/translations.js"></script>
   <script src="js/main.js"></script>
   <script src="js/eligibility.js"></script>
 </body>

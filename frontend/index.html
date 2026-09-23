@@ -18,66 +18,73 @@
       </div>
     </div>
     <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="schemes.html">Schemes</a></li>
-      <li><a href="eligibility.html">Eligibility</a></li>
-      <li><a href="about.html">About Us</a></li>
+<li><a href="index.html" class="active" data-i18n="home">Home</a></li>
+<li><a href="schemes.html" data-i18n="schemes">Schemes</a></li>
+<li><a href="eligibility.html" data-i18n="eligibility">Eligibility</a></li>
+<li><a href="about.html" data-i18n="aboutUs">About Us</a></li>
     </ul>
-    <a href="admin-login.html"><button class="btn-admin">🔒 Admin Login</button></a>
+   <div style="display:flex; align-items:center; gap:12px;">
+  <select id="language-selector" onchange="setLanguage(this.value)" style="padding:8px 12px; border-radius:6px; border:1px solid var(--border);">
+    <option value="en">English</option>
+    <option value="hi">हिन्दी</option>
+    <option value="te">తెలుగు</option>
+  </select>
+  <a href="admin-login.html"><button class="btn-admin" data-i18n="adminLogin">🔒 Admin Login</button></a>
+</div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Your Right<br>Schemes, At One Place</h1>
-      <p>Explore government schemes and find the support you need for a better tomorrow.</p>
-      <div class="search-box">
-        <input type="text" placeholder="Search for schemes...">
-      </div>
+    <h1><span data-i18n="heroTitle1">Your Right</span><br><span data-i18n="heroTitle2">Schemes, At One Place</span></h1>
+<p data-i18n="heroDesc">Explore government schemes and find the support you need for a better tomorrow.</p>
+<div class="search-box">
+  <input type="text" data-i18n-placeholder="searchPlaceholder" placeholder="Search for schemes...">
+</div>
     </div>
   </section>
 
   <!-- CATEGORIES -->
   <section class="categories-section">
-    <h2>Browse by Category</h2>
+   <h2 data-i18n="browseByCategory">Browse by Category</h2>
     <div class="category-grid">
 
       <div class="category-card" data-category="student">
         <div class="category-icon icon-student">🎓</div>
-        <h3>Student</h3>
-        <p>Education, scholarships, career support and more.</p>
-        <span class="view-schemes-link student">View Schemes →</span>
+        <h3 data-i18n="student">Student</h3>
+        <p data-i18n="studentDesc">Education, scholarships, career support and more.</p>
+        <span class="view-schemes-link student" data-i18n="ViewSchemes">View Schemes →</span>
       </div>
 
       <div class="category-card" data-category="agriculture">
         <div class="category-icon icon-agriculture">🌾</div>
-        <h3>Agriculture</h3>
-        <p>Farmer welfare, crop support, modern farming and more.</p>
-        <span class="view-schemes-link agriculture">View Schemes →</span>
+        <h3 data-i18n="agriculture">Agriculture</h3>
+        <p data-i18n="agricultureDesc">Farmer welfare, crop support, modern farming and more.</p>
+        <span class="view-schemes-link agriculture" data-i18n="ViewSchemes">View Schemes →</span>
       </div>
 
       <div class="category-card" data-category="physicallyChallenged">
         <div class="category-icon icon-disability">♿</div>
-        <h3>Physically Challenged</h3>
-        <p>Support, accessibility, empowerment and more.</p>
-        <span class="view-schemes-link disability">View Schemes →</span>
+        <h3 data-i18n="physicallyChallenged">Physically Challenged</h3>
+        <p data-i18n="physicallyChallengedDesc">Support, accessibility, empowerment and more.</p>
+        <span class="view-schemes-link disability" data-i18n="ViewSchemes">View Schemes →</span>
       </div>
 
       <div class="category-card" data-category="health">
         <div class="category-icon icon-health">❤️</div>
-        <h3>Health & Wellness</h3>
-        <p>Healthcare, nutrition, wellness and more.</p>
-        <span class="view-schemes-link health">View Schemes →</span>
+        <h3 data-i18n="health">Health & Wellness</h3>
+        <p data-i18n="healthDesc">Healthcare, nutrition, wellness and more.</p>
+        <span class="view-schemes-link health" data-i18n="ViewSchemes">View Schemes →</span>
       </div>
 
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    © 2026 CGSP | Centralized Government Schemes Portal &nbsp;|&nbsp; Empowering Citizens · Inclusive Growth · Digital India
-  </footer>
-
+<footer class="footer">
+  © 2026 CGSP | Centralized Government Schemes Portal &nbsp;|&nbsp; <span data-i18n="footer">Empowering Citizens · Inclusive Growth · Digital India</span>
+</footer>
+<script src="js/translations.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
