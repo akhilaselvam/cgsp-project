@@ -39,6 +39,10 @@
       display: none;
     }
     .eligibility-result.show { display: block; }
+    .cat-btn.active {
+      background: var(--primary);
+      color: white;
+    }
     @media (max-width: 768px) {
       .form-row3, .form-row2 { grid-template-columns: 1fr; }
     }
@@ -65,9 +69,17 @@
 
   <div class="elig-wrapper">
     <h1>Check Your Eligibility</h1>
-    <p style="color:#6b7280; margin-bottom:20px;">Fill in your details below to see which schemes you're eligible for.</p>
+    <p style="color:#6b7280; margin-bottom:20px;">Select a category, then fill in your details to see which schemes you're eligible for.</p>
 
     <div class="elig-box">
+
+      <div class="elig-section-title">Select Category</div>
+      <div style="display:flex; gap:12px; margin-bottom:10px; flex-wrap:wrap;">
+        <button type="button" class="btn btn-outline cat-btn active" data-cat="student" onclick="selectCategory('student')">🎓 Student</button>
+        <button type="button" class="btn btn-outline cat-btn" data-cat="agriculture" onclick="selectCategory('agriculture')">🌾 Agriculture</button>
+        <button type="button" class="btn btn-outline cat-btn" data-cat="physicallyChallenged" onclick="selectCategory('physicallyChallenged')">♿ Physically Challenged</button>
+        <button type="button" class="btn btn-outline cat-btn" data-cat="health" onclick="selectCategory('health')">❤️ Health & Wellness</button>
+      </div>
 
       <div class="elig-section-title">Personal Information</div>
       <div class="form-row3">
@@ -160,8 +172,6 @@
 
       <div class="elig-section-title">Additional Information (as per category)</div>
       <div class="form-row3">
-       
-        
         <div class="form-group">
           <label>Disability Type (if applicable)</label>
           <select id="disability-type">

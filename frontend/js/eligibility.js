@@ -1,3 +1,14 @@
+let currentEligCategory = 'student';
+
+function selectCategory(cat) {
+  currentEligCategory = cat;
+  document.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-cat') === cat);
+  });
+  document.getElementById('result-box').classList.remove('show');
+  document.getElementById('matching-schemes').innerHTML = '';
+}
+
 async function checkEligibility() {
   const name = document.getElementById('full-name').value;
   const age = document.getElementById('age').value;
@@ -15,7 +26,7 @@ async function checkEligibility() {
   matchList.innerHTML = '<p>Checking matching schemes...</p>';
 
   try {
-    const response = await fetch(`${API_BASE}/schemes`);
+    const response = await fetch(`${API_BASE}/schemes/${currentEligCategory}`);
     const schemes = await response.json();
 
     const details = {
@@ -28,7 +39,7 @@ async function checkEligibility() {
     const matched = schemes.filter(scheme => isEligible(scheme, details));
 
     if (matched.length === 0) {
-      showResult(`Hi ${name}, no schemes match the details you provided.`, false);
+      showResult(`Hi ${name}, no schemes match the details you provided in this category.`, false);
       matchList.innerHTML = '';
       return;
     }
@@ -44,7 +55,7 @@ async function checkEligibility() {
 }
 
 function isEligible(scheme, details) {
-  if (scheme.category === 'student') {
+  if (currentEligCategory === 'student') {
     if (scheme.maxIncome != null) {
       if (details.income == null || details.income > scheme.maxIncome) return false;
     }
@@ -54,18 +65,18 @@ function isEligible(scheme, details) {
     return true;
   }
 
-  if (scheme.category === 'agriculture') {
-    return true; // no restriction fields for agriculture anymore
+  if (currentEligCategory === 'agriculture') {
+    return true;
   }
 
-  if (scheme.category === 'physicallyChallenged') {
+  if (currentEligCategory === 'physicallyChallenged') {
     if (!scheme.disabilityTypes || scheme.disabilityTypes.length === 0) return true;
     if (scheme.disabilityTypes.includes('All')) return true;
     if (!details.disability) return false;
     return scheme.disabilityTypes.includes(details.disability);
   }
 
-  if (scheme.category === 'health') {
+  if (currentEligCategory === 'health') {
     if (scheme.minAge != null) {
       if (details.age == null || details.age < scheme.minAge) return false;
     }
@@ -86,7 +97,7 @@ function renderMatchingSchemes(schemes) {
   matchList.innerHTML = schemes.map(scheme => `
     <div class="scheme-card" style="margin-top:14px;">
       <div class="scheme-card-info">
-        <h3>${scheme.name} <span style="font-size:12px; color:#6b7280;">(${scheme.category})</span></h3>
+        <h3>${scheme.name}</h3>
         <p><strong>Eligibility:</strong> ${scheme.eligibilityCriteria}</p>
         <div class="scheme-meta">
           <span><strong>Department:</strong> ${scheme.department}</span>
